@@ -1,0 +1,55 @@
+#Post your favourite >=3 Table join statement from Test database
+
+SELECT * FROM OrderDetails
+JOIN Orders
+ON OrderDetails.OrderID = Orders.OrderID
+JOIN Employees
+ON Orders.EmployeeID = Employees.EmployeeID
+JOIN Products
+ON OrderDetails.ProductID = Products.ProductID
+
+
+
+#Application of SQL (Who sold for how much?)
+
+SELECT Employees.FirstName, SUM(OrderDetails.Quantity*Products.Price) AS CASH FROM OrderDetails
+JOIN Orders
+ON OrderDetails.OrderID = Orders.OrderID
+JOIN Employees
+ON Orders.EmployeeID = Employees.EmployeeID
+JOIN Products
+ON OrderDetails.ProductID = Products.ProductID
+GROUP BY Employees.FirstName
+
+#Design SQL statement to create two tables 
+
+
+CREATE TABLE Mutations
+(
+MutationID int(255),
+Chromosome tinyint,
+ID varchar(255),
+Position int(255),
+Reference varchar(4),
+Alternate varchar(4),
+GT varchar(4),
+GQ varchar(4), 
+DP varchar(4),
+HQ varchar(9),
+Filter varchar(255),
+Info varchar(255),
+Notes varchar(255)
+);
+
+CREATE TABLE Samples
+(
+SampleID int(255),
+Age tinyint,
+Gender tinyint,
+Tissue varchar(20),
+Species varchar(20),
+Health varchar(10),
+Status var(20), 
+Study var(50),
+Notes varchar(255)
+);
